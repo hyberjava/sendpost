@@ -14,6 +14,8 @@ public class Main {
 
     private static final String GET_URL = "http://127.0.0.1:8080/signin";
 
+    private static final String MAIN_EXCEPTION = "SOMETHING GOING WRONG";
+
     private static final String POST_URL_SIGNIN = "http://127.0.0.1:8080/signin";
 
     private static final String POST_URL_SIGNUP = "http://127.0.0.1:8080/signup";
@@ -48,29 +50,33 @@ public class Main {
 
     private static final String RIGHT_REQUEST = "Authorized";
 
-    public static void main(String[] args) throws IOException {
-        System.out.println(FIRST_TEST_STARTED);
-        String[] responseSignUp = sendPOST(POST_URL_SIGNUP);
-        if (responseSignUp[0].equals(RIGHT_RESPONSE_CODE)) {
-            System.out.println(WAITING_RESPONSE + responseSignUp[0] + RESPONSE_CODE_SUCCESS);
-            System.out.println(FIRST_TEST_PASSED);
-        } else {
-            System.out.println(WAITING_RESPONSE + responseSignUp[0] + RESPONSE_CODE_FILED);
-            System.out.println(FIRST_TEST_FAILED);
-        }
-        System.out.println(SECOND_TEST_STERTED);
-        String[] responseSignIn = sendPOST(POST_URL_SIGNIN);
-        if (responseSignIn[0].equals(RIGHT_RESPONSE_CODE)) {
-            System.out.println(WAITING_RESPONSE + responseSignIn[0] + RESPONSE_CODE_SUCCESS);
-            if (responseSignIn[1].equals(RIGHT_REQUEST)) {
-                System.out.println(WAITING_REQUEST + responseSignIn[1] + RESPONSE_REQUEST_SUCCESS);
-                System.out.println(SECOND_TEST_PASSED);
+    public static void main(String[] args) {
+        try {
+            String[] responseSignUp = sendPOST(POST_URL_SIGNUP);
+            System.out.println(FIRST_TEST_STARTED);
+            if (responseSignUp[0].equals(RIGHT_RESPONSE_CODE)) {
+                System.out.println(WAITING_RESPONSE + responseSignUp[0] + RESPONSE_CODE_SUCCESS);
+                System.out.println(FIRST_TEST_PASSED);
             } else {
-                System.out.println(WAITING_REQUEST + responseSignIn[1] + RESPONSE_REQUEST_FAIL);
+                System.out.println(WAITING_RESPONSE + responseSignUp[0] + RESPONSE_CODE_FILED);
+                System.out.println(FIRST_TEST_FAILED);
             }
-        } else {
-            System.out.println(WAITING_RESPONSE + responseSignIn[0] + RESPONSE_CODE_FILED);
-            System.out.println(SECOND_TEST_FAILED);
+            String[] responseSignIn = sendPOST(POST_URL_SIGNIN);
+            System.out.println(SECOND_TEST_STERTED);
+            if (responseSignIn[0].equals(RIGHT_RESPONSE_CODE)) {
+                System.out.println(WAITING_RESPONSE + responseSignIn[0] + RESPONSE_CODE_SUCCESS);
+                if (responseSignIn[1].equals(RIGHT_REQUEST)) {
+                    System.out.println(WAITING_REQUEST + responseSignIn[1] + RESPONSE_REQUEST_SUCCESS);
+                    System.out.println(SECOND_TEST_PASSED);
+                } else {
+                    System.out.println(WAITING_REQUEST + responseSignIn[1] + RESPONSE_REQUEST_FAIL);
+                }
+            } else {
+                System.out.println(WAITING_RESPONSE + responseSignIn[0] + RESPONSE_CODE_FILED);
+                System.out.println(SECOND_TEST_FAILED);
+            }
+        } catch (IOException e) {
+            System.out.println(MAIN_EXCEPTION + ", " + e.getMessage());
         }
     }
 
