@@ -4,11 +4,13 @@
 
 
 ======================
-***
-#####DOWNLOAD
+
+
+
+####DOWNLOAD
 [скачать](https://github.com/hyberjava/sendpost/blob/master/sendpost.jar)
 
-#####HOWTO
+####HOWTO
 запускать при уже запущенном в IDE или еще каким способом сервере:
 
 ```
