@@ -50,26 +50,26 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         System.out.println(FIRST_TEST_STARTED);
-        String[] responseSignup = sendPOST(POST_URL_SIGNUP);
-        if (responseSignup[0].equals(RIGHT_RESPONSE_CODE)) {
-            System.out.println(WAITING_RESPONSE + responseSignup[0] + RESPONSE_CODE_SUCCESS);
+        String[] responseSignUp = sendPOST(POST_URL_SIGNUP);
+        if (responseSignUp[0].equals(RIGHT_RESPONSE_CODE)) {
+            System.out.println(WAITING_RESPONSE + responseSignUp[0] + RESPONSE_CODE_SUCCESS);
             System.out.println(FIRST_TEST_PASSED);
         } else {
-            System.out.println(WAITING_RESPONSE + responseSignup[0] + RESPONSE_CODE_FILED);
+            System.out.println(WAITING_RESPONSE + responseSignUp[0] + RESPONSE_CODE_FILED);
             System.out.println(FIRST_TEST_FAILED);
         }
         System.out.println(SECOND_TEST_STERTED);
-        String[] responseSignin = sendPOST(POST_URL_SIGNIN);
-        if (responseSignin[0].equals(RIGHT_RESPONSE_CODE)) {
-            System.out.println(WAITING_RESPONSE + responseSignin[0] + RESPONSE_CODE_SUCCESS);
-            if (responseSignin[1].equals(RIGHT_REQUEST)) {
-                System.out.println(WAITING_REQUEST + responseSignin[1] + RESPONSE_REQUEST_SUCCESS);
+        String[] responseSignIn = sendPOST(POST_URL_SIGNIN);
+        if (responseSignIn[0].equals(RIGHT_RESPONSE_CODE)) {
+            System.out.println(WAITING_RESPONSE + responseSignIn[0] + RESPONSE_CODE_SUCCESS);
+            if (responseSignIn[1].equals(RIGHT_REQUEST)) {
+                System.out.println(WAITING_REQUEST + responseSignIn[1] + RESPONSE_REQUEST_SUCCESS);
                 System.out.println(SECOND_TEST_PASSED);
             } else {
-                System.out.println(WAITING_REQUEST + responseSignin[1] + RESPONSE_REQUEST_FAIL);
+                System.out.println(WAITING_REQUEST + responseSignIn[1] + RESPONSE_REQUEST_FAIL);
             }
         } else {
-            System.out.println(WAITING_RESPONSE + responseSignin[0] + RESPONSE_CODE_FILED);
+            System.out.println(WAITING_RESPONSE + responseSignIn[0] + RESPONSE_CODE_FILED);
             System.out.println(SECOND_TEST_FAILED);
         }
     }
